@@ -34,6 +34,7 @@ namespace MouseMover
             this.stop = new System.Windows.Forms.Button();
             this.title = new System.Windows.Forms.TextBox();
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // begin
@@ -70,11 +71,23 @@ namespace MouseMover
             this.Timer1.Interval = 5000;
             this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Items.AddRange(new object[] {
+            "5 sec",
+            "10 sec"});
+            this.comboBox1.Location = new System.Drawing.Point(328, 291);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // TitlePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.title);
             this.Controls.Add(this.stop);
             this.Controls.Add(this.begin);
@@ -91,6 +104,7 @@ namespace MouseMover
         private System.Windows.Forms.Button stop;
         private System.Windows.Forms.TextBox title;
         private System.Windows.Forms.Timer Timer1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
