@@ -17,11 +17,10 @@ namespace MouseMover
             InitializeComponent();
         }
 
+        //TODO: add icon to window, general aesthetics. Try to deploy it outside of IDE.
+
         //bool to use in loop within timer function. Can't think of a better way to do this, but I'm betting there is one.
         bool there = false;
-
-        //variable with time interval (in seconds) that the cursor moves
-        int interval = 5;
 
         //method to actually move the mouse
         private void MoveCursorThere()
@@ -39,11 +38,10 @@ namespace MouseMover
             Cursor.Clip = new Rectangle(this.Location, this.Size);
         }
 
-
         //Initialize Timer
         private void InitializeTimer()
         {
-            Timer1.Interval = (interval * 1000);
+            Timer1.Interval = 3000;
             Timer1.Tick += new EventHandler(Timer1_Tick);
         }
 
@@ -65,7 +63,14 @@ namespace MouseMover
         //method to turn it on
         private void begin_Click(object sender, EventArgs e)
         {
-            Timer1.Start();
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an interval.", "No interval selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Timer1.Start();
+            }
         }
 
         //method to turn it off
@@ -73,12 +78,18 @@ namespace MouseMover
         {
             Timer1.Stop();
         }
-        //TODO method for new combo box, will change interval variable based on input
+
+        //method to change interval variable based on combobox input
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            //string selected = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
-            //MessageBox.Show(selected);
+        {          
+            int intervalIndex = this.comboBox1.SelectedIndex;
+
+            if (intervalIndex == 0){Timer1.Interval = 3000;}
+            if (intervalIndex == 1) {Timer1.Interval = 10000;}
+            if (intervalIndex == 2) {Timer1.Interval = 30000;}
+            if (intervalIndex == 3) {Timer1.Interval = 60000;}
+            if (intervalIndex == 4) {Timer1.Interval = 300000;}
+            if (intervalIndex == 5) {Timer1.Interval = 600000;}
         }
     }
 }
