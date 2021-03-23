@@ -17,8 +17,6 @@ namespace MouseMover
             InitializeComponent();
         }
 
-        //TODO: add icon to window, general aesthetics. Try to deploy it outside of IDE.
-
         //Initializes Timer
         private void InitializeTimer()
         {
